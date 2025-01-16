@@ -26,7 +26,7 @@ def log(request):
     # 输出日志
     logger.debug('~')
     logger.info('user logged in')
-    logger.error('user not exist)
+    logger.error('user not exist')
     logger.warning('redis')
     return HttpResponse('log')
 
