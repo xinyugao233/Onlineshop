@@ -17,19 +17,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+#
+# def log(request):
+#     import logging
+#
+#     # 创建日志记录器
+#     logger = logging.getLogger('django')
+#     # 输出日志
+#     logger.debug('~')
+#     logger.info('user logged in')
+#     logger.error('user not exist')
+#     logger.warning('redis')
+#     return HttpResponse('log')
 
-def log(request):
-    import logging
-
-    # 创建日志记录器
-    logger = logging.getLogger('django')
-    # 输出日志
-    logger.debug('~')
-    logger.info('user logged in')
-    logger.error('user not exist')
-    logger.warning('redis')
-    return HttpResponse('log')
-
+from utils.converters import UsernameConverter
+from django.urls import register_converter
+register_converter(UsernameConverter, 'username')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.users.urls')),
